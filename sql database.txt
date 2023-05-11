@@ -1,0 +1,12 @@
+SELECT Orders.OrderID, Orders.OrderDate, Customers.CustomerName, Customers.City, Customers.Address, Customers.PostalCode, Shippers.ShipperName, Products.ProductName, OrderDetails.Quantity
+FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID INNER JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID INNER JOIN Products ON OrderDetails.ProductID = Products.ProductID;
+
+
+SELECT DISTINCT Products.ProductName, Shippers.ShipperName FROM Products INNER JOIN OrderDetails ON Products.ProductID = OrderDetails.ProductID INNER JOIN Orders ON OrderDetails.OrderID = Orders.OrderID INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID;
+SELECT Shippers.ShipperName, COUNT(OrderDetails.ProductID) AS 'Total Products Sold' FROM Shippers JOIN Orders ON Shippers.ShipperID = Orders.ShipperID JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID GROUP by Shippers.ShipperName;
+
+SELECT COUNT(*) FROM Customers WHERE CustomerName not LIKE '%son%';
+
+*
+
